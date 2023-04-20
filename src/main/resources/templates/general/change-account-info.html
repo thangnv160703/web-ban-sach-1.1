@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Web ban sach</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+	<div class="container-sm p-5 mt-5 col-6 border text-center">
+		<form th:action="@{/changeinfo}" method="post" th:object="${account}">
+			<h3>Thay doi thong tin</h3>
+
+			<input type="hidden" th:field="*{id}">
+			<input type="hidden" th:field="*{role}">
+
+			<h4 class="text-start">Thong tin tai khoan</h4>
+			<div class="form-outline m-4">
+				<h5 class="text-start">Username:</h5>
+				<input type="text" class="form-control mb-3" th:field="*{username}" minlength="5" required />
+				<h5 class="text-start">Password:</h5>
+				<input type="password" class="form-control mb-3" th:field="*{password}" minlength="5" required />
+			</div>
+
+			<div th:if="${message != null}">
+				<p th:text="${message}"></p>
+			</div>
+
+			<h4 class="text-start">Thong tin ca nhan</h4>
+			<div class="form-outline m-4">
+				<h5 class="text-start">Ho ten:</h5>
+				<input type="text" class="form-control mb-3" th:field="*{name}" required />
+				<h5 class="text-start">Email (neu co):</h5>
+				<input type="email" class="form-control mb-3" th:field="*{email}" />
+				<h5 class="text-start">Sdt :</h5>
+				<input type="tel" class="form-control mb-3" th:field="*{sdt}" required/>
+			</div>
+
+			<div>
+				<button type="submit" class="btn btn-secondary mb-4" onclick="return confirm('Tu dong dang xuat khoi tai khoan. Chac chan muon thay doi?')">Xac nhan</button>
+				<a class="btn btn-secondary mb-4" href="/" role="button">Huy</a>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
